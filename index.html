@@ -8,9 +8,21 @@
 <body>
     <h1>Nungguin ya?</h1>
     <script>
-        // Aktifkan mode fullscreen
-        if (window.Telegram && Telegram.WebApp) {
+        // Periksa apakah Telegram WebApp API tersedia
+        if (typeof Telegram !== 'undefined' && Telegram.WebApp) {
+            // Pastikan Mini App dibuka dalam layar penuh
             Telegram.WebApp.expand();
+
+            // Dengarkan perubahan ukuran viewport
+            Telegram.WebApp.onEvent('viewportChanged', () => {
+                // Periksa apakah ukuran tidak fullscreen
+                if (!Telegram.WebApp.isExpanded) {
+                    // Tutup Mini App
+                    Telegram.WebApp.close();
+                }
+            });
+        } else {
+            console.warn("Telegram WebApp API is not available.");
         }
         // URL website asli yang ingin Anda sembunyikan
         const hiddenUrl = "https://taphoalive.com/sellsatarbotbyphong/login.do#tgWebAppData=user%3D%257B%2522id%2522%253A6992766812%252C%2522first_name%2522%253A%2522SORA%2520MCN%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522SORAMCN%2522%252C%2522language_code%2522%253A%2522id%2522%252C%2522is_premium%2522%253Atrue%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D-8639550235629375604%26chat_type%3Dsender%26auth_date%3D1728836660%26hash%3De7f524df46bfa430163921cba89182f125e1aea2beddd7c2c8963b457c287542&tgWebAppVersion=7.10&tgWebAppPlatform=web&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212121%22%2C%22button_color%22%3A%22%238774e1%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%23aaaaaa%22%2C%22link_color%22%3A%22%238774e1%22%2C%22secondary_bg_color%22%3A%22%23181818%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23212121%22%2C%22accent_text_color%22%3A%22%238774e1%22%2C%22section_bg_color%22%3A%22%23212121%22%2C%22section_header_text_color%22%3A%22%238774e1%22%2C%22subtitle_text_color%22%3A%22%23aaaaaa%22%2C%22destructive_text_color%22%3A%22%23ff595a%22%7D"; // Ganti dengan URL asli Anda
