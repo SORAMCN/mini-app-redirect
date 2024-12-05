@@ -1,0 +1,133 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Menjamin tampilan selalu penuh */
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden; /* Hilangkan scroll horizontal */
+}
+
+h1 {
+    font-size: 1.8rem; /* Skala lebih kecil agar cocok di layar ponsel */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Container */
+.container {
+    background: #ffffff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Lebar 90% dari layar */
+    max-width: 400px; /* Batas maksimal untuk perangkat besar */
+    box-sizing: border-box;
+}
+
+form input {
+    display: block;
+    width: calc(100% - 20px); /* Sesuai dengan padding container */
+    padding: 10px;
+    margin: 15px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #6a11cb;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.2);
+}
+
+#error {
+    display: none;
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px; /* Kurangi margin agar lebih compact */
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Button */
+button {
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 12px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:active {
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Tambahkan efek aktif untuk tap */
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 95%; /* Lebih kecil untuk layar kecil */
+    }
+
+    form input, button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Jumpscare Page */
+.jumpscare-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Pastikan penuh layar */
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.jumpscare-container video {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+/* Overlay Effect */
+.jumpscare-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
